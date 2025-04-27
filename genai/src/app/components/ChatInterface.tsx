@@ -109,7 +109,7 @@ export default function ChatInterface() {
 
           <div>
             <h1 className="text-xl font-bold text-white drop-shadow-sm">
-              Osaretin's Assistant
+              Osaretin&apos;s Assistant
             </h1>
             <div className="flex items-center gap-1">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
@@ -137,7 +137,7 @@ export default function ChatInterface() {
               transition={{ delay: 0.4 }}
               className="text-2xl font-semibold text-purple-700 dark:text-purple-400"
             >
-              Welcome to Osaretin's Digital Assistant!
+              Welcome to Osaretin&apos;s Digital Assistant!
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 10 }}

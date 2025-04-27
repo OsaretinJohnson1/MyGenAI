@@ -317,11 +317,11 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl leading-relaxed"
               >
-                I'm Osaretin Johnson — a passionate Full-Stack Developer and
-                Aspiring AI Engineer. I specialize in building smart, scalable,
-                and beautiful software solutions, blending cutting-edge
-                technology with creativity. Let's bring bold ideas to life
-                together!
+                I&apos;m Osaretin Johnson — a passionate Full-Stack Developer
+                and Aspiring AI Engineer. I specialize in building smart,
+                scalable, and beautiful software solutions, blending
+                cutting-edge technology with creativity. Let&apos;s bring bold
+                ideas to life together!
               </motion.p>
 
               <motion.div
