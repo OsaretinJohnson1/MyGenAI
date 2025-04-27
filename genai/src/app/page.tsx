@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ThemeToggle } from "./components/ThemeToggle";
 import {
-  User,
   Code,
   Cloud,
   FileCheck,

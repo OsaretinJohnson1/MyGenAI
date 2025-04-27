@@ -145,8 +145,8 @@ export default function ChatInterface() {
               transition={{ delay: 0.6 }}
               className="text-gray-500 dark:text-gray-400 max-w-sm"
             >
-              Ask me anything and I'll respond with professional flair and a
-              touch of magic
+              Ask me anything and I&apos;ll respond with professional flair and
+              a touch of magic
             </motion.p>
           </div>
         )}
