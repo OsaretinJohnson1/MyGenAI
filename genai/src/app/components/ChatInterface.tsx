@@ -87,9 +87,9 @@ export default function ChatInterface() {
   };
 
   return (
-    <div className="flex flex-col h-[60vh] sm:h-[70vh] md:h-[80vh] max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-xl bg-gradient-to-br from-white to-pink-50 w-full px-2 sm:px-4 md:px-6">
+    <div className="flex flex-col h-[80vh] max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-xl bg-gradient-to-br from-white to-pink-50 dark:from-gray-900 dark:to-purple-900 w-full">
       {/* Header */}
-      <div className="flex-shrink-0 bg-gradient-to-r from-purple-400 via-pink-300 to-rose-300 p-2 sm:p-3 md:p-4 shadow-md">
+      <div className="flex-shrink-0 bg-gradient-to-r from-purple-400 via-pink-300 to-rose-300 dark:from-purple-600 dark:via-pink-500 dark:to-rose-500 p-3 shadow-md">
         <div className="flex items-center gap-2 sm:gap-3 px-1 sm:px-2">
           <motion.div
             initial={{ scale: 0.8 }}
@@ -120,14 +120,14 @@ export default function ChatInterface() {
       </div>
 
       {/* Messages Container */}
-      <div className="flex-1 overflow-y-auto p-2 sm:p-3 md:p-4 space-y-3 sm:space-y-4 md:space-y-6 bg-gradient-to-br from-white to-pink-50">
+      <div className="flex-1 overflow-y-auto p-3 space-y-4 bg-gradient-to-br from-white to-pink-50 dark:from-gray-900 dark:to-purple-900">
         {messages.length === 0 && (
           <div className="h-full flex flex-col items-center justify-center text-center px-6 py-20 space-y-6">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="w-24 h-24 rounded-full bg-gradient-to-br from-pink-300 to-purple-400 flex items-center justify-center shadow-lg"
+              className="w-24 h-24 rounded-full bg-gradient-to-br from-pink-300 to-purple-400 dark:from-pink-500 dark:to-purple-600 flex items-center justify-center shadow-lg"
             >
               <span className="text-4xl">❤</span>
             </motion.div>
@@ -135,15 +135,15 @@ export default function ChatInterface() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-2xl font-semibold text-purple-700"
+              className="text-2xl font-semibold text-purple-700 dark:text-purple-400"
             >
-              Welcome to your stylish chat!
+              Welcome to Osaretin's Digital Assistant!
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="text-gray-500 max-w-sm"
+              className="text-gray-500 dark:text-gray-400 max-w-sm"
             >
               Ask me anything and I'll respond with professional flair and a
               touch of magic
@@ -191,16 +191,16 @@ export default function ChatInterface() {
                 <div
                   className={`rounded-2xl sm:rounded-3xl p-3 sm:p-4 shadow-md ${
                     message.role === "user"
-                      ? "bg-gradient-to-r from-pink-500 to-purple-500 text-white ml-auto"
-                      : "bg-gradient-to-r from-violet-100 to-pink-100 text-gray-800 border border-purple-100"
+                      ? "bg-gradient-to-r from-pink-500 to-purple-500 dark:from-pink-600 dark:to-purple-600 text-white ml-auto"
+                      : "bg-gradient-to-r from-violet-100 to-pink-100 dark:from-violet-900 dark:to-pink-900 text-gray-800 dark:text-gray-200 border border-purple-100 dark:border-purple-800"
                   }`}
                 >
-                  <div className="prose prose-sm max-w-none">
+                  <div className="prose prose-sm dark:prose-invert max-w-none">
                     {message.content}
                   </div>
                 </div>
                 <span
-                  className={`text-xs text-gray-400 mt-1 ${
+                  className={`text-xs text-gray-400 dark:text-gray-500 mt-1 ${
                     message.role === "user" ? "text-right" : "text-left"
                   }`}
                 >
@@ -210,7 +210,7 @@ export default function ChatInterface() {
 
               {message.role === "user" && (
                 <div className="flex-shrink-0 mt-1">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-pink-400 to-rose-300 flex items-center justify-center shadow-md text-white">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-pink-400 to-rose-300 dark:from-pink-500 dark:to-rose-400 flex items-center justify-center shadow-md text-white">
                     <User size={14} strokeWidth={2.5} />
                   </div>
                 </div>
@@ -235,7 +235,7 @@ export default function ChatInterface() {
                 priority
               />
             </div>
-            <div className="bg-gradient-to-r from-violet-100 to-pink-100 text-purple-800 rounded-3xl p-4 shadow-md flex items-center space-x-2">
+            <div className="bg-gradient-to-r from-violet-100 to-pink-100 dark:from-violet-900 dark:to-pink-900 text-purple-800 dark:text-purple-300 rounded-3xl p-4 shadow-md flex items-center space-x-2">
               <div className="flex space-x-1">
                 <motion.div
                   animate={{
@@ -249,7 +249,7 @@ export default function ChatInterface() {
                     times: [0, 0.5, 1],
                     delay: 0,
                   }}
-                  className="w-2 h-2 rounded-full bg-purple-400"
+                  className="w-2 h-2 rounded-full bg-purple-400 dark:bg-purple-500"
                 />
                 <motion.div
                   animate={{
@@ -263,7 +263,7 @@ export default function ChatInterface() {
                     times: [0, 0.5, 1],
                     delay: 0.3,
                   }}
-                  className="w-2 h-2 rounded-full bg-pink-400"
+                  className="w-2 h-2 rounded-full bg-pink-400 dark:bg-pink-500"
                 />
                 <motion.div
                   animate={{
@@ -277,7 +277,7 @@ export default function ChatInterface() {
                     times: [0, 0.5, 1],
                     delay: 0.6,
                   }}
-                  className="w-2 h-2 rounded-full bg-rose-400"
+                  className="w-2 h-2 rounded-full bg-rose-400 dark:bg-rose-500"
                 />
               </div>
               <span className="text-sm font-medium">Thinking...</span>
@@ -288,7 +288,7 @@ export default function ChatInterface() {
       </div>
 
       {/* Input Area */}
-      <div className="flex-shrink-0 p-2 sm:p-3 md:p-4 bg-white/80 backdrop-blur-lg border-t border-pink-100 shadow-inner">
+      <div className="flex-shrink-0 p-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border-t border-pink-100 dark:border-purple-900 shadow-inner">
         <form
           onSubmit={handleSubmit}
           className="flex gap-2 sm:gap-3 items-center"
@@ -299,7 +299,7 @@ export default function ChatInterface() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask me anything... "
-              className="w-full pl-3 sm:pl-4 md:pl-5 pr-8 sm:pr-10 md:pr-12 py-2 sm:py-3 md:py-4 border-2 border-pink-200 rounded-full focus:outline-none focus:ring-3 focus:ring-pink-200 focus:border-pink-300 bg-white/90 text-gray-700 placeholder-gray-400 shadow-inner transition-all duration-300 text-sm sm:text-base"
+              className="w-full pl-3 sm:pl-4 md:pl-5 pr-8 sm:pr-10 md:pr-12 py-2 sm:py-3 md:py-4 border-2 border-pink-200 dark:border-purple-700 rounded-full focus:outline-none focus:ring-3 focus:ring-pink-200 dark:focus:ring-purple-700 focus:border-pink-300 dark:focus:border-purple-600 bg-white/90 dark:bg-gray-900/90 text-gray-700 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 shadow-inner transition-all duration-300 text-sm sm:text-base"
             />
             <AnimatePresence>
               {input.length > 0 && (
@@ -309,7 +309,7 @@ export default function ChatInterface() {
                   exit={{ opacity: 0, scale: 0.8 }}
                   type="button"
                   onClick={() => setInput("")}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300"
                 >
                   ✕
                 </motion.button>
@@ -320,7 +320,7 @@ export default function ChatInterface() {
           <motion.button
             type="submit"
             disabled={isLoading || input.trim() === ""}
-            className="bg-gradient-to-r from-pink-400 to-purple-500 text-white px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 rounded-full hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-pink-400 disabled:opacity-70 disabled:cursor-not-allowed shadow-md transition-all duration-300 flex items-center gap-2 font-medium text-sm sm:text-base"
+            className="bg-gradient-to-r from-pink-400 to-purple-500 dark:from-pink-500 dark:to-purple-600 text-white px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 rounded-full hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-pink-400 dark:focus:ring-purple-500 disabled:opacity-70 disabled:cursor-not-allowed shadow-md transition-all duration-300 flex items-center gap-2 font-medium text-sm sm:text-base"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
           >

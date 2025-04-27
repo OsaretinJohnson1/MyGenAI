@@ -1,9 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { pacifico, comicNeue } from "./fonts";
+import { Inter, Pacifico, Comic_Neue } from "next/font/google";
+import { ThemeProvider } from "next-themes";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+const pacifico = Pacifico({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-pacifico",
+});
+const comicNeue = Comic_Neue({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-comic-neue",
+});
 
 export const metadata: Metadata = {
   title: "My AI Assistant",
@@ -16,11 +26,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${inter.className} ${pacifico.variable} ${comicNeue.variable}`}
       >
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

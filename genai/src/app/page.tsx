@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { ThemeToggle } from "./components/ThemeToggle";
 import {
   User,
   Code,
@@ -14,14 +15,19 @@ import {
   ChevronDown,
 } from "lucide-react";
 import ChatInterface from "./components/ChatInterface";
+import Skills from "./components/Skills";
+import Education from "./components/Education";
+import Contact from "./components/Contact";
+import Projects from "./components/Projects";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("");
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["hero", "skills", "chat"];
+      const sections = ["hero", "skills", "education", "projects", "contact"];
       let current = "";
 
       for (const section of sections) {
@@ -64,7 +70,6 @@ export default function Home() {
       const posY = Math.floor(Math.random() * (container.offsetHeight / 2)); // Only in top half
       particle.style.left = `${posX}px`;
       particle.style.top = `${posY}px`;
-
       // Add blur effect
       particle.style.filter = "blur(1px)";
 
@@ -165,36 +170,48 @@ export default function Home() {
   return (
     <main className="relative">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-purple-100 dark:border-purple-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center space-x-2">
-              <Image
-                src="/assets/Osaretin - Cartoon 4.png"
-                alt="Logo"
-                width={32}
-                height={32}
-                className="rounded-full"
-              />
-              <span className="text-xl font-semibold bg-gradient-to-r from-purple-600 to-pink-600 text-transparent bg-clip-text">
+              <motion.div
+                initial={{ scale: 0.8 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                className="rounded-full p-1 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900 dark:to-pink-900 shadow-inner"
+              >
+                <Image
+                  src="/assets/Osaretin - Cartoon 4.png"
+                  alt="Logo"
+                  width={32}
+                  height={32}
+                  className="rounded-full"
+                />
+              </motion.div>
+              <span className="text-xl font-semibold bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 text-transparent bg-clip-text">
                 Osaretin Johnson
               </span>
             </Link>
-            <nav className="hidden md:flex items-center space-x-8">
-              {["hero", "skills", "chat"].map((section) => (
-                <Link
-                  key={section}
-                  href={`#${section}`}
-                  className={`text-sm font-medium transition-colors duration-200 ${
-                    activeSection === section
-                      ? "text-purple-600"
-                      : "text-gray-600 hover:text-purple-600"
-                  }`}
-                >
-                  {section.charAt(0).toUpperCase() + section.slice(1)}
-                </Link>
-              ))}
-            </nav>
+            <div className="flex items-center space-x-8">
+              <nav className="hidden md:flex items-center space-x-8">
+                {["hero", "skills", "education", "projects", "contact"].map(
+                  (section) => (
+                    <Link
+                      key={section}
+                      href={`#${section}`}
+                      className={`text-sm font-medium transition-colors duration-200 ${
+                        activeSection === section
+                          ? "text-purple-600 dark:text-purple-400"
+                          : "text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
+                      }`}
+                    >
+                      {section.charAt(0).toUpperCase() + section.slice(1)}
+                    </Link>
+                  )
+                )}
+              </nav>
+              <ThemeToggle />
+            </div>
           </div>
         </div>
       </header>
@@ -202,25 +219,27 @@ export default function Home() {
       {/* Floating Navigation Indicators */}
       <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-50 hidden md:block">
         <div className="flex flex-col gap-3 items-center">
-          {["hero", "skills", "chat"].map((section) => (
-            <Link
-              key={section}
-              href={`#${section}`}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                activeSection === section
-                  ? "bg-gradient-to-r from-pink-500 to-purple-600 scale-125 shadow-md"
-                  : "bg-gray-300 hover:bg-gray-400"
-              }`}
-              aria-label={`Scroll to ${section} section`}
-            />
-          ))}
+          {["hero", "skills", "education", "projects", "contact"].map(
+            (section) => (
+              <Link
+                key={section}
+                href={`#${section}`}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  activeSection === section
+                    ? "bg-gradient-to-r from-pink-500 to-purple-600 dark:from-pink-400 dark:to-purple-500 scale-125 shadow-md"
+                    : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
+                }`}
+                aria-label={`Scroll to ${section} section`}
+              />
+            )
+          )}
         </div>
       </div>
 
       {/* Hero Section */}
       <section
         id="hero"
-        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-tr from-purple-50 via-pink-50 to-white pt-32"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-tr from-purple-50 via-pink-50 to-white dark:from-gray-900 dark:via-purple-900 dark:to-gray-900 pt-32"
       >
         {/* Decorative Elements */}
         <div className="absolute top-20 right-20 w-96 h-96 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
@@ -228,27 +247,30 @@ export default function Home() {
         <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-violet-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-32">
+            {/* Avatar Section - Left Side */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="mb-8 relative"
+              className="relative flex-shrink-0 md:ml-24"
             >
               {/* Avatar with glow effect */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full blur-xl opacity-30"></div>
-              <Image
-                src="/assets/Osaretin - Cartoon 4.png"
-                alt="Developer Avatar"
-                width={140}
-                height={140}
-                className="mx-auto rounded-full shadow-xl border-4 border-white z-20 relative"
-                priority
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full blur-xl opacity-30"></div>
+              <video
+                src="/assets/372658644871753734.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                className="rounded-[80%] shadow-xl border-4 border-white z-20 relative w-[140px] h-[200px] object-cover"
+                style={{ aspectRatio: "0.7/1", objectFit: "cover" }}
               />
 
               {/* Decorative circles around avatar */}
               <motion.div
-                className="absolute top-1/2 left-1/2 w-48 h-48 border border-pink-300 rounded-full -translate-x-1/2 -translate-y-1/2"
+                className="absolute top-1/2 left-1/2 w-48 h-[270px] border border-pink-300 rounded-[80%] -translate-x-1/2 -translate-y-1/2"
                 animate={{
                   scale: [1, 1.05, 1],
                   opacity: [0.9, 0.7, 0.9],
@@ -260,7 +282,7 @@ export default function Home() {
                 }}
               />
               <motion.div
-                className="absolute top-1/2 left-1/2 w-64 h-64 border border-purple-300 rounded-full -translate-x-1/2 -translate-y-1/2"
+                className="absolute top-1/2 left-1/2 w-64 h-[360px] border border-purple-300 rounded-[80%] -translate-x-1/2 -translate-y-1/2"
                 animate={{
                   scale: [1, 1.03, 1],
                   opacity: [0.7, 0.5, 0.7],
@@ -274,101 +296,100 @@ export default function Home() {
               />
             </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight"
-            >
-              Meet Osaretin Johnson,
-              <div className="relative inline-block">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 relative z-10">
-                  {" "}
-                  A Creative AI & Full-Stack Developer
-                </span>
-                <motion.div
-                  className="absolute -bottom-2 left-0 right-0 h-3 bg-gradient-to-r from-purple-200 to-pink-200 opacity-40 rounded-full z-0"
-                  animate={{
-                    width: ["0%", "100%", "95%"],
-                  }}
-                  transition={{
-                    duration: 1.5,
-                    delay: 1,
-                    ease: "easeInOut",
-                  }}
-                />
-              </div>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed"
-            >
-              I'm Osaretin Johnson — a passionate Full-Stack Developer 
-              and Aspiring AI Engineer. I specialize in building smart, 
-              scalable, and beautiful software solutions, blending cutting-edge 
-              technology with creativity. Let’s bring bold ideas to life together!
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-wrap justify-center gap-4 mb-24"
-            >
-              <Link
-                href="#chat"
-                className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-medium overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
+            {/* Text Content - Right Side */}
+            <div className="flex-1 text-left md:mr-24 max-w-2xl">
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 leading-tight"
               >
-                <span className="relative z-10">Chat with my AI Twin</span>
-                <motion.div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-600 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <motion.div className="absolute -inset-1 bg-gradient-to-r from-pink-400 to-purple-500 z-0 opacity-0 blur-md group-hover:opacity-30 transition-opacity duration-300" />
-              </Link>
-              <Link
-                href="#skills"
-                className="group relative px-8 py-4 bg-white text-gray-700 rounded-full font-medium overflow-hidden shadow-md hover:shadow-lg hover:text-purple-600 transition-all duration-300"
-              >
-                <span className="relative z-10">View Skills</span>
-                <motion.div className="absolute inset-0 bg-gradient-to-r from-purple-50 to-pink-50 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </Link>
-            </motion.div>
+                Osaretin Johnson
+                <div className="relative block mt-2">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 relative z-10 text-lg sm:text-xl md:text-2xl">
+                    Software Engineer | AI Enthusiast
+                  </span>
+                </div>
+              </motion.h1>
 
-            {/* Scroll Indicator */}
-            <motion.div
-              className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2, duration: 0.8 }}
-            >
-              <Link
-                href="#skills"
-                className="flex flex-col items-center text-gray-400 hover:text-purple-500 transition-colors duration-300"
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl leading-relaxed"
               >
-                <span className="text-sm mb-2">Scroll to explore</span>
-                <motion.div
-                  animate={{ y: [0, 6, 0] }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    repeatType: "loop",
+                I'm Osaretin Johnson — a passionate Full-Stack Developer and
+                Aspiring AI Engineer. I specialize in building smart, scalable,
+                and beautiful software solutions, blending cutting-edge
+                technology with creativity. Let's bring bold ideas to life
+                together!
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="flex flex-wrap gap-4 mb-24"
+              >
+                <Link
+                  href="#chat"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsChatOpen(true);
                   }}
+                  className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-medium overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
                 >
-                  <ChevronDown size={20} />
-                </motion.div>
-              </Link>
-            </motion.div>
+                  <span className="relative z-10">Chat with my AI Twin</span>
+                  <motion.div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-600 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <motion.div className="absolute -inset-1 bg-gradient-to-r from-pink-400 to-purple-500 z-0 opacity-0 blur-md group-hover:opacity-30 transition-opacity duration-300" />
+                </Link>
+                <Link
+                  href="#skills"
+                  className="group relative px-8 py-4 bg-white text-gray-700 rounded-full font-medium overflow-hidden shadow-md hover:shadow-lg hover:text-purple-600 transition-all duration-300"
+                >
+                  <span className="relative z-10">View Skills</span>
+                  <motion.div className="absolute inset-0 bg-gradient-to-r from-purple-50 to-pink-50 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </Link>
+              </motion.div>
+            </div>
           </div>
+
+          {/* Scroll Indicator */}
+          <motion.div
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.8 }}
+          >
+            <Link
+              href="#skills"
+              className="flex flex-col items-center text-gray-600 dark:text-gray-300 hover:text-purple-500 transition-colors duration-300"
+            >
+              <span className="text-sm mb-2">Scroll to explore</span>
+              <motion.div
+                animate={{ y: [0, 6, 0] }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                }}
+              >
+                <ChevronDown size={20} />
+              </motion.div>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-32 bg-white relative overflow-hidden">
+      <section
+        id="skills"
+        className="py-32 bg-white dark:bg-gray-900 relative overflow-hidden"
+      >
         {/* Decorative background shapes */}
-        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-pink-50 to-white"></div>
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-pink-50 to-white dark:from-purple-900 dark:to-gray-900"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-pink-100 dark:bg-purple-900 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-100 dark:bg-pink-900 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.div
@@ -384,7 +405,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
-                className="inline-block px-4 py-1 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-600 rounded-full text-sm font-medium mb-4"
+                className="inline-block px-4 py-1 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900 dark:to-pink-900 text-purple-600 dark:text-purple-400 rounded-full text-sm font-medium mb-4"
               >
                 What I Offer
               </motion.span>
@@ -393,7 +414,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
-                className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-4"
+                className="text-3xl sm:text-4xl font-bold text-center text-gray-900 dark:text-white mb-4"
               >
                 My Expertise & Passion Areas
               </motion.h2>
@@ -402,18 +423,18 @@ export default function Home() {
                 whileInView={{ opacity: 1, scaleX: 1 }}
                 transition={{ duration: 0.7, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="h-1 w-24 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto mb-6"
+                className="h-1 w-24 bg-gradient-to-r from-purple-400 to-pink-400 dark:from-purple-500 dark:to-pink-500 mx-auto mb-6"
               ></motion.div>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="text-gray-600 max-w-2xl mx-auto"
+                className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
               >
-                I thrive at the intersection of technology, innovation, 
-                and impact — crafting elegant software and intelligent 
-                AI-driven systems to solve real-world problems.
+                I thrive at the intersection of technology, innovation, and
+                impact — crafting elegant software and intelligent AI-driven
+                systems to solve real-world problems.
               </motion.p>
             </div>
 
@@ -452,7 +473,7 @@ export default function Home() {
                 {
                   title: "Technical Documentation",
                   description:
-                    "I believe good documentation empowers teams and future developers. I’ve created detailed technical reports, system designs, and code documentation during my internships and tutoring sessions.",
+                    "I believe good documentation empowers teams and future developers. I've created detailed technical reports, system designs, and code documentation during my internships and tutoring sessions.",
                   icon: "Technical Documentation",
                 },
               ].map((skill, index) => (
@@ -463,17 +484,17 @@ export default function Home() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true, margin: "-100px" }}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                  className="group p-8 bg-white rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300"
+                  className="group p-8 bg-white dark:bg-gray-800 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 dark:border-gray-700 transition-all duration-300"
                 >
                   <div className="flex items-center justify-start mb-6">
-                    <div className="p-3 rounded-2xl bg-gradient-to-r from-purple-50 to-pink-50 group-hover:from-purple-100 group-hover:to-pink-100 transition-colors duration-300">
+                    <div className="p-3 rounded-2xl bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900 dark:to-pink-900 group-hover:from-purple-100 group-hover:to-pink-100 dark:group-hover:from-purple-800 dark:group-hover:to-pink-800 transition-colors duration-300">
                       {skillIcons[skill.icon as keyof typeof skillIcons]}
                     </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-purple-600 transition-colors duration-300">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
                     {skill.title}
                   </h3>
-                  <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+                  <p className="text-gray-600 dark:text-gray-300 group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300">
                     {skill.description}
                   </p>
                 </motion.div>
@@ -483,87 +504,65 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Chat Interface Section */}
-      <section
-        id="chat"
-        className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 relative overflow-hidden flex items-center justify-center"
-      >
-        {/* Decorative blob shapes */}
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+      {/* Education Section */}
+      <Education />
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex items-center justify-center py-32 pt-60 pb-1">
+      {/* Projects Section */}
+      <Projects />
+
+      {/* Technical Skills Section */}
+      <Skills />
+
+      {/* Chat Modal */}
+      <AnimatePresence>
+        {isChatOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="max-w-4xl w-full mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            onClick={() => setIsChatOpen(false)}
           >
-            <div className="text-center mb-12">
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className="inline-block px-4 py-1 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-600 rounded-full text-sm font-medium mb-4"
-              >
-                Let's Chat
-              </motion.span>
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-                className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-4"
-              >
-                Let's Build Something Amazing
-              </motion.h2>
-              <motion.div
-                initial={{ opacity: 0, scaleX: 0 }}
-                whileInView={{ opacity: 1, scaleX: 1 }}
-                transition={{ duration: 0.7, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="h-1 w-24 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto mb-6"
-              ></motion.div>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="text-lg text-center text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed"
-              >
-                I'm here to help you with your development challenges. Whether
-                you need code review, architecture advice, or help with a
-                specific problem, I'm ready to assist.
-              </motion.p>
-            </div>
-
-            {/* Chat interface wrapper with gradient border */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="relative flex items-center justify-center"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative w-full max-w-4xl bg-white dark:bg-gray-900 rounded-3xl shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
             >
-              {/* Gradient border effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-pink-400 via-purple-400 to-violet-400 rounded-3xl blur-sm opacity-70"></div>
-
-              {/* Chat component */}
-              <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-10 border border-white/50 w-full">
-                <ChatInterface />
-              </div>
+              <button
+                onClick={() => setIsChatOpen(false)}
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 z-10"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+              <ChatInterface />
             </motion.div>
           </motion.div>
-        </div>
-      </section>
+        )}
+      </AnimatePresence>
+
+      {/* Contact Section */}
+      <Contact />
 
       {/* Footer */}
-      <footer className="py-12 bg-white border-t border-gray-100">
+      <footer className="py-12 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-gray-500 text-sm">
-            Designed with 💜 and professional expertise
+          <p className="text-gray-600 dark:text-gray-400 text-sm">
+            Designed with love and flair by Osaretin Johnson!
           </p>
         </div>
       </footer>
