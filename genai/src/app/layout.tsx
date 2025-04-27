@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Pacifico, Comic_Neue } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 const pacifico = Pacifico({
@@ -16,8 +17,8 @@ const comicNeue = Comic_Neue({
 });
 
 export const metadata: Metadata = {
-  title: "My AI Assistant",
-  description: "Ask me anything about my experience and skills!",
+  title: "Osaretin Johnson",
+  description: "This is my portfolio website!",
 };
 
 export default function RootLayout({
@@ -27,6 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <Head>
+        <link rel="icon" href="/avatar.png" type="image/png" />
+      </Head>
       <body
         className={`${inter.className} ${pacifico.variable} ${comicNeue.variable}`}
       >
