@@ -17,8 +17,8 @@ const skills = [
 export default function Skills() {
   return (
     <section
-      id="skills"
-      className="py-20 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-900 dark:to-purple-900"
+      id="technical-skills"
+      className="py-20"
     >
       <div className="container mx-auto px-6">
         <motion.h2
