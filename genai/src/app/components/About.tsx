@@ -39,10 +39,10 @@ export default function About() {
                 </h3>
               </div>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                I started coding because I wanted to understand how the apps I 
-                used every day actually worked. That curiosity took me from 
-                learning C# basics to winning hackathons and building real 
-                solutions for South African communities. Now I'm passionate 
+                I started coding because I wanted to understand how the apps I
+                used every day actually worked. That curiosity took me from
+                learning C# basics to winning hackathons and building real
+                solutions for South African communities. Now I'm passionate
                 about using tech to solve problems that matter.
               </p>
             </motion.div>
@@ -61,11 +61,11 @@ export default function About() {
                 </h3>
               </div>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                I believe technology should be accessible and inclusive. That's 
-                why I teach coding workshops, mentor students, and build 
-                solutions for healthcare, education, and public service. 
-                Every line of code I write is a step toward a more connected 
-                South Africa.
+                I believe technology should be accessible and inclusive. That's
+                why I organize tech events and workshops that empower youth with
+                digital skills, and build solutions for healthcare, education,
+                and public service. Every line of code I write is a step toward
+                a more connected South Africa.
               </p>
             </motion.div>
           </div>
@@ -84,21 +84,23 @@ export default function About() {
                   Beyond the Code
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                  When I'm not debugging or building features, you'll find me 
-                  teaching Arduino basics to students, exploring new AI 
-                  frameworks, or enjoying a good cup of coffee while reading 
-                  about the latest tech trends. I'm also passionate about 
-                  making tech education accessible to everyone, which is why 
-                  I volunteer at Cortex Hub.
+                  When I'm not debugging or building features, you'll find me
+                  playing tennis, teaching myself to swim, or diving into a good
+                  book. I'm passionate about organizing tech events and workshops
+                  that empower youth with digital skills, and I love exploring
+                  new AI frameworks while staying updated on the latest tech trends.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   <span className="px-3 py-1 bg-white dark:bg-gray-800 rounded-full text-sm text-purple-600 dark:text-purple-400 border border-purple-200 dark:border-purple-700">
-                    ☕ Coffee Enthusiast
+                    🎾 Tennis Player
                   </span>
                   <span className="px-3 py-1 bg-white dark:bg-gray-800 rounded-full text-sm text-pink-600 dark:text-pink-400 border border-pink-200 dark:border-pink-700">
-                    🎓 Teaching
+                    🏊‍♂️ Learning to Swim
                   </span>
                   <span className="px-3 py-1 bg-white dark:bg-gray-800 rounded-full text-sm text-purple-600 dark:text-purple-400 border border-purple-200 dark:border-purple-700">
+                    📚 Avid Reader
+                  </span>
+                  <span className="px-3 py-1 bg-white dark:bg-gray-800 rounded-full text-sm text-pink-600 dark:text-pink-400 border border-pink-200 dark:border-pink-700">
                     🤖 AI Explorer
                   </span>
                 </div>
@@ -110,5 +112,6 @@ export default function About() {
     </section>
   );
 }
+
 
 

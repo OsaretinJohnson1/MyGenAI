@@ -17,7 +17,7 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-4xl font-bold mb-4 text-center text-gray-900 dark:text-white"
         >
-          Get in Touch
+          Let's Build Something Amazing Together
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -26,8 +26,8 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-center text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto"
         >
-          I'm always open to discussing new projects, creative ideas, or 
-          opportunities to be part of your vision. Let's chat!
+          Whether you're looking to bring an innovative idea to life, need technical expertise for your next project,
+          or want to explore AI-driven solutions, I'm here to help turn your vision into reality.
         </motion.p>
 
         <div className="max-w-2xl mx-auto">
@@ -44,13 +44,20 @@ export default function Contact() {
                 Let's Talk About
               </h3>
             </div>
-            <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-              <li>• New project opportunities</li>
-              <li>• Collaborations on AI/ML projects</li>
-              <li>• Speaking or workshop opportunities</li>
-              <li>• Mentorship or career advice</li>
-              <li>• Just saying hi! 👋</li>
-            </ul>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="font-medium text-gray-900 dark:text-white mb-3">Projects & Work</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                  Full-stack applications, AI implementations, IoT systems, and innovative tech solutions.
+                </p>
+              </div>
+              <div>
+                <h4 className="font-medium text-gray-900 dark:text-white mb-3">Collaborations</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                  Tech workshops, open source projects, startup partnerships, and community initiatives.
+                </p>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div
@@ -62,6 +69,16 @@ export default function Contact() {
           >
             <Clock className="w-4 h-4" />
             <span>I typically respond within 24-48 hours</span>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="text-center mb-6"
+          >
+            <p className="text-gray-600 dark:text-gray-400">Find me online</p>
           </motion.div>
 
           <div className="flex justify-center space-x-8">
@@ -94,14 +111,14 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                  transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`${social.color} transition-colors duration-300`}
+                  className={`${social.color} transition-colors duration-300 p-3 rounded-full hover:bg-purple-50 dark:hover:bg-purple-900/20`}
                   aria-label={social.label}
                 >
-                  <Icon className="w-8 h-8" />
+                  <Icon className="w-6 h-6" />
                 </motion.a>
               );
             })}

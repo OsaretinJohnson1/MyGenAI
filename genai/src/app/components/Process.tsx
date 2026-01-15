@@ -61,16 +61,18 @@ export default function Process() {
                     viewport={{ once: true }}
                     className="relative"
                   >
-                    <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-purple-100 dark:border-purple-900 text-center">
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 mb-4">
+                    <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-purple-100 dark:border-purple-900 text-center h-80 flex flex-col">
+                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 mb-4 flex-shrink-0">
                         <Icon className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+                      <h3 className="font-semibold text-gray-900 dark:text-white mb-2 flex-shrink-0">
                         {step.title}
                       </h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-300">
-                        {step.description}
-                      </p>
+                      <div className="flex-1 flex items-center">
+                        <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                          {step.description}
+                        </p>
+                      </div>
                     </div>
                   </motion.div>
                 );
@@ -82,5 +84,6 @@ export default function Process() {
     </section>
   );
 }
+
 
 

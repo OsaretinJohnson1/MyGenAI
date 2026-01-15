@@ -121,33 +121,35 @@ export default function Expertise() {
                                     viewport={{ once: true, margin: "-50px" }}
                                     className="group relative"
                                 >
-                                    <div className="relative h-full p-6 lg:p-8 bg-white dark:bg-gray-900/80 rounded-2xl border border-gray-100 dark:border-gray-800 hover:border-purple-200 dark:hover:border-purple-800 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/5">
+                                    <div className="relative h-96 p-6 lg:p-8 bg-white dark:bg-gray-900/80 rounded-2xl border border-gray-100 dark:border-gray-800 hover:border-purple-200 dark:hover:border-purple-800 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/5 flex flex-col">
                                         {/* Gradient overlay on hover */}
                                         <div
                                             className={`absolute inset-0 bg-gradient-to-br ${skill.bgColor} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
                                         />
 
                                         {/* Content */}
-                                        <div className="relative z-10">
+                                        <div className="relative z-10 flex flex-col h-full">
                                             {/* Icon */}
                                             <div
-                                                className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${skill.color} mb-5 shadow-lg`}
+                                                className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${skill.color} mb-5 shadow-lg flex-shrink-0`}
                                             >
                                                 <Icon className="w-6 h-6 text-white" />
                                             </div>
 
                                             {/* Title with arrow */}
-                                            <div className="flex items-center gap-2 mb-3">
+                                            <div className="flex items-center gap-2 mb-3 flex-shrink-0">
                                                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-purple-700 dark:group-hover:text-purple-300 transition-colors duration-300">
                                                     {skill.title}
                                                 </h3>
-                                                <ArrowUpRight className="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                                                <ArrowUpRight className="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex-shrink-0" />
                                             </div>
 
                                             {/* Description */}
-                                            <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm lg:text-base">
-                                                {skill.description}
-                                            </p>
+                                            <div className="flex-1 overflow-hidden">
+                                                <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm lg:text-base">
+                                                    {skill.description.length > 200 ? `${skill.description.substring(0, 200)}...` : skill.description}
+                                                </p>
+                                            </div>
                                         </div>
 
                                         {/* Bottom accent line */}

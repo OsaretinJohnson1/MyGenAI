@@ -15,7 +15,7 @@ import Contact from "./components/Contact";
 import Projects from "./components/Projects";
 import Expertise from "./components/Expertise";
 import About from "./components/About";
-import Testimonials from "./components/Testimonials";
+
 import Currently from "./components/Currently";
 import Process from "./components/Process";
 
@@ -316,7 +316,7 @@ export default function Home() {
                 What started as curiosity about how apps work led me to win 5 hackathons and
                 build solutions that actually matter. When I'm not coding, you'll find me
                 teaching Arduino workshops at Cortex Hub or exploring how AI can serve
-                communities across South Africa. Let's build something meaningful together! 🚀
+                communities across South Africa. Let's build something meaningful together!
               </motion.p>
 
               <motion.div
@@ -391,10 +391,10 @@ export default function Home() {
       <Process />
 
       {/* Currently Section */}
-      <Currently />
+      {/* <Currently /> */}
 
       {/* Testimonials Section */}
-      <Testimonials />
+      {/* <Testimonials /> */}
 
       {/* Technical Skills Section */}
       <Skills />
