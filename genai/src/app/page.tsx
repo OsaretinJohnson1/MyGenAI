@@ -16,7 +16,6 @@ import Projects from "./components/Projects";
 import Expertise from "./components/Expertise";
 import About from "./components/About";
 
-import Currently from "./components/Currently";
 import Process from "./components/Process";
 
 // Define sections in order of appearance
@@ -312,11 +311,11 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl leading-relaxed"
               >
-                I'm Osaretin Johnson, a software engineer from East London, South Africa.
+                I&apos;m Osaretin Johnson, a software engineer from East London, South Africa.
                 What started as curiosity about how apps work led me to win 5 hackathons and
-                build solutions that actually matter. When I'm not coding, you'll find me
+                build solutions that actually matter. When I&apos;m not coding, you&apos;ll find me
                 teaching Arduino workshops at Cortex Hub or exploring how AI can serve
-                communities across South Africa. Let's build something meaningful together!
+                communities across South Africa. Let&apos;s build something meaningful together!
               </motion.p>
 
               <motion.div

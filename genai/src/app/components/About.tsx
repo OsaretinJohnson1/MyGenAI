@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Coffee, Heart, Lightbulb } from "lucide-react";
+import { MapPin, Coffee, Heart } from "lucide-react";
 
 export default function About() {
   return (
@@ -42,7 +42,7 @@ export default function About() {
                 I started coding because I wanted to understand how the apps I
                 used every day actually worked. That curiosity took me from
                 learning C# basics to winning hackathons and building real
-                solutions for South African communities. Now I'm passionate
+                solutions for South African communities. Now I&apos;m passionate
                 about using tech to solve problems that matter.
               </p>
             </motion.div>
@@ -61,7 +61,7 @@ export default function About() {
                 </h3>
               </div>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                I believe technology should be accessible and inclusive. That's
+                I believe technology should be accessible and inclusive. That&apos;s
                 why I organize tech events and workshops that empower youth with
                 digital skills, and build solutions for healthcare, education,
                 and public service. Every line of code I write is a step toward
@@ -84,9 +84,9 @@ export default function About() {
                   Beyond the Code
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                  When I'm not debugging or building features, you'll find me
+                  When I&apos;m not debugging or building features, you&apos;ll find me
                   playing tennis, teaching myself to swim, or diving into a good
-                  book. I'm passionate about organizing tech events and workshops
+                  book. I&apos;m passionate about organizing tech events and workshops
                   that empower youth with digital skills, and I love exploring
                   new AI frameworks while staying updated on the latest tech trends.
                 </p>

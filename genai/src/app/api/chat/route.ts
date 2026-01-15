@@ -1,11 +1,6 @@
 import { NextResponse } from 'next/server';
 import Groq from 'groq-sdk';
 
-// Initialize Groq SDK
-const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY,
-});
-
 // System prompt
 const personalInfo = `
 You are a professional, upbeat AI assistant representing Osaretin Johnson 🎓👨🏽‍💻.
@@ -71,6 +66,11 @@ export async function POST(req: Request) {
     if (!message || typeof message !== 'string') {
       return NextResponse.json({ error: 'Invalid message format' }, { status: 400 });
     }
+
+    // Initialize Groq SDK
+    const groq = new Groq({
+      apiKey: process.env.GROQ_API_KEY,
+    });
 
     const chatCompletion = await groq.chat.completions.create({
       messages: [

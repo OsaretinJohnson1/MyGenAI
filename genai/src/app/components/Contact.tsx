@@ -17,7 +17,7 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-4xl font-bold mb-4 text-center text-gray-900 dark:text-white"
         >
-          Let's Build Something Amazing Together
+          Let&apos;s Build Something Amazing Together
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -26,8 +26,8 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-center text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto"
         >
-          Whether you're looking to bring an innovative idea to life, need technical expertise for your next project,
-          or want to explore AI-driven solutions, I'm here to help turn your vision into reality.
+          Whether you&apos;re looking to bring an innovative idea to life, need technical expertise for your next project,
+          or want to explore AI-driven solutions, I&apos;m here to help turn your vision into reality.
         </motion.p>
 
         <div className="max-w-2xl mx-auto">
@@ -41,7 +41,7 @@ export default function Contact() {
             <div className="flex items-center gap-3 mb-4">
               <MessageCircle className="w-5 h-5 text-purple-600 dark:text-purple-400" />
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                Let's Talk About
+                Let&apos;s Talk About
               </h3>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

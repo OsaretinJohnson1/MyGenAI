@@ -49,7 +49,7 @@ export default function Testimonials() {
             >
               <Quote className="w-8 h-8 text-purple-400 mb-4" />
               <p className="text-gray-700 dark:text-gray-300 mb-4 italic leading-relaxed">
-                "{testimonial.quote}"
+                &ldquo;{testimonial.quote}&rdquo;
               </p>
               <div className="border-t border-purple-100 dark:border-purple-800 pt-4">
                 <p className="font-semibold text-gray-900 dark:text-white">
